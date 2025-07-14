@@ -184,3 +184,5 @@ export {
   Toaster,
   useToast,
 }
+
+export { Toaster }
