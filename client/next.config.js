@@ -1,31 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  experimental: {
+    appDir: true,
+  },
+  images: {
+    domains: ['localhost'],
+  },
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001',
+  },
 }
 
 module.exports = nextConfig
-
-
-// For build production
-// const withTM = require('next-transpile-modules')([
-//   '@mui/material',
-//   '@mui/system',
-//   '@mui/icons-material'
-// ]);
-
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   reactStrictMode: true,
-//   experimental: {
-//     styledComponents: true
-//   },
-//   webpack: (config) => {
-//     config.resolve.alias = {
-//       ...config.resolve.alias,
-//       '@mui/styled-engine': '@mui/styled-engine-sc'
-//     };
-//     return config;
-//   }
-// };
-
-// module.exports = withTM(nextConfig);

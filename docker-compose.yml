@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: recipe_app_db
+    environment:
+      POSTGRES_DB: recipe_app
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - recipe_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: recipe_app_redis
+    ports:
+      - "6379:6379"
+    networks:
+      - recipe_network
+
+volumes:
+  postgres_data:
+
+networks:
+  recipe_network:
+    driver: bridge
